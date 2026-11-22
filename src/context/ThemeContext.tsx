@@ -12,7 +12,7 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [darkMode, setDarkMode] = useState(() => getDarkMode());
+  const [darkMode, setDarkMode] = useState<boolean>(() => getDarkMode());
 
   useEffect(() => {
     if (darkMode) {
@@ -23,7 +23,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     saveDarkMode(darkMode);
   }, [darkMode]);
 
-  const toggleDarkMode = () => setDarkMode(prev => !prev);
+  const toggleDarkMode = () => setDarkMode((prev: boolean) => !prev);
 
   return (
     <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>

@@ -6,6 +6,7 @@ const defaultProgress: AppProgress = {
   grammarResults: [],
   vocabQuizResults: [],
   flashcardProgress: [],
+  darkMode: false,
 };
 
 export function loadProgress(): AppProgress {
@@ -67,4 +68,15 @@ export function getFlashcardCompletedSections(): number[] {
       return fp.learnedWordIds.length >= sectionSize;
     })
     .map(fp => fp.sectionId);
+}
+
+export function getDarkMode(): boolean {
+  const progress = loadProgress();
+  return progress.darkMode ?? false;
+}
+
+export function setDarkMode(isDark: boolean): void {
+  const progress = loadProgress();
+  progress.darkMode = isDark;
+  saveProgress(progress);
 }

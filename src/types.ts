@@ -65,4 +65,5 @@ export interface AppProgress {
   grammarResults: QuizResult[];
   vocabQuizResults: QuizResult[];
   flashcardProgress: FlashcardProgress[];
+  darkMode?: boolean;
 }
